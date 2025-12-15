@@ -1,12 +1,48 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Python and HTML</title>
-    </head>
-    <body>
-        <h1>Welcome!</h1>
-        <button onclick="fetch('/execute_script').then(response => response.text()).then(data => alert(data))">
-            Run Python Script
-        </button>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croque-Livre 📚</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 Croque-Livre — Current Books</h1>
+</header>
+
+<main id="booksContainer">
+    <!-- Books will appear here -->
+</main>
+
+<script>
+    async function loadBooks() {
+        try {
+            const response = await fetch("/api/books"); // adjust if your API path is different
+            const books = await response.json();
+
+            const container = document.getElementById("booksContainer");
+            container.innerHTML = "";
+
+            books.forEach(book => {
+                const card = document.createElement("div");
+                card.className = "book-card";
+                card.innerHTML = `
+                    <h2>${book.title}</h2>
+                    <p><strong>Author:</strong> ${book.author || "Unknown"}</p>
+                    <p><strong>Year:</strong> ${book.year || "N/A"}</p>
+                `;
+                container.appendChild(card);
+            });
+        } catch (err) {
+            console.error(err);
+            document.getElementById("booksContainer").innerText = "Failed to load books.";
+        }
+    }
+
+    window.onload = loadBooks;
+</script>
+
+</body>
+</html>
