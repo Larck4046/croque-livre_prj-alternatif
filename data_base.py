@@ -38,7 +38,7 @@ def add_remove():
     print("Oublie pas de sauvegarder dans le fichier Anthony!!!")
     
     while True:
-        path = 'data_base.json'
+        path = '/api/books.json'
         manager = FileManager(path)
         
         choice = input("Select between adding or removing a book (add/remove/searching/quit)")
