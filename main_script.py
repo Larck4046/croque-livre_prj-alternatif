@@ -5,7 +5,7 @@ site = Flask(name_server)
 
 @site.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('web_gui/index.html')
 
 @site.route('/execute_script')
 def execute_script():
