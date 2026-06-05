@@ -1,10 +1,3 @@
-"""
-
-Si tu veux modifier qqch Feel Free! Et si tu as des questions, pose les ici
-Jumeau t’es un génie
-"""
-
-
 import json
 import os
 import shutil
@@ -130,10 +123,3 @@ def clear_terminal():
     # For macOS and Linux (Unix-like systems)
     else:
         _ = os.system("clear")
-
-
-
-
-
-
-
